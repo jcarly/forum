@@ -8,28 +8,28 @@ FlowRouter.route('/', {
 ///////////////////ADMIN///////////////////////
 
 var adminSection = FlowRouter.group({
-    prefix: "/admin"
+  prefix: "/admin"
 });
 
 // for the /admin page
 adminSection.route('/', {
-    action: function() {}
+  action: function() {}
 });
 
 // for the /admin/new-post page
 adminSection.route('/new-post', {
-    action: function() {}
+  action: function() {}
 });
 
 ///////////////USER/////////////////////////////
 
 var userSection = FlowRouter.group({
-    prefix: "/user"
+  prefix: "/user"
 });
 
 // for the /admin page
 userSection.route('/:userId', {
-   action(params) {
+  action(params) {
     ReactLayout.render(MainLayout, {content: <User {...params} />});
   }
 });
