@@ -31,7 +31,12 @@ App = React.createClass({
       return <Task key={task._id} task={task} />;
      });
   },
- 
+  handleClick: function(event) {
+    Meteor.call('getUserData', function(err, data) {
+      console.log('click');
+      console.log(JSON.stringify(data, undefined, 4));
+    });
+  },
   handleSubmit(event) {
     event.preventDefault();
  
@@ -57,9 +62,8 @@ App = React.createClass({
  
   render() {
     return (
-      <div className="container">
-         <header>
-          <h1>Todo List ({this.data.incompleteCount})</h1>
+        <div>
+          <h2>Todo List ({this.data.incompleteCount})</h2>
  
           <label className="hide-completed">
             <input
@@ -80,11 +84,15 @@ App = React.createClass({
                 placeholder="Type to add new tasks" />
             </form> : ''
           }
-        </header>
+
  
         <ul>
           {this.renderTasks()}
         </ul>
+        <button className="btn" id="btn-user-data" onClick={this.handleClick}>Get User Data</button>
+          <div class="well">
+              <pre id="result"></pre>
+          </div>
       </div>
     );
   }
