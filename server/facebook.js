@@ -1,5 +1,5 @@
 function Facebook(accessToken) {
-    this.fb = Meteor.require('fbgraph');
+    this.fb = Meteor.npmRequire('fbgraph');
     this.accessToken = accessToken;
     this.fb.setAccessToken(this.accessToken);
     this.options = {
@@ -25,11 +25,20 @@ Facebook.prototype.getUserData = function() {
     return this.query('me');
 }
 
+Facebook.prototype.getFriendsData = function() {
+    return this.query('/me/likes');
+}
+
 Meteor.methods({
     getUserData: function() {
         var fb = new Facebook(Meteor.user().services.facebook.accessToken);
         var data = fb.getUserData();
         console.log('token:'+Meteor.user().services.facebook.accessToken);
         return data;
-    }
+    },
+    getFriendsData: function() {   
+	    var fb = new Facebook(Meteor.user().services.facebook.accessToken);
+	    var data = fb.getFriendsData();
+	    return data;
+	}
 });

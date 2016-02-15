@@ -6,7 +6,10 @@ Tasks = new Mongo.Collection("tasks");
 if (Meteor.isClient) {
   // This code is executed on the client only
 	Accounts.ui.config({
-		passwordSignupFields: "USERNAME_ONLY"
+		passwordSignupFields: "USERNAME_ONLY",
+		requestPermissions: {
+		    facebook: ['user_friends','user_relationships','user_likes'],
+		}
 	});
 
   /*	Template.login.events({

@@ -32,7 +32,7 @@ App = React.createClass({
      });
   },
   handleClick: function(event) {
-    Meteor.call('getUserData', function(err, data) {
+    Meteor.call('getFriendsData', function(err, data) {
       console.log('click');
       console.log(JSON.stringify(data, undefined, 4));
     });
