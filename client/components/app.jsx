@@ -69,7 +69,7 @@ App = React.createClass({
             Hide Completed Tasks
           </label>
  
-          <AccountsUIWrapper />
+          <UserWidget />
 
           { this.data.currentUser ?
             <form className="new-task" onSubmit={this.handleSubmit} >

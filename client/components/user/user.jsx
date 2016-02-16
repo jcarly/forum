@@ -1,22 +1,10 @@
-MainLayout = React.createClass({
-  render() {
-    return (
-      <div>
-        <header><h1>Forum</h1></header>
-        <main>{this.props.content}</main>
-        <footer>Copyright</footer>
-      </div>
-    );
-  }
-});
-
 User = React.createClass({
 
   mixins: [ReactMeteorData],
   getMeteorData() {
     var data = {};
     var userId = this.props.userId;
-    var handle = Meteor.subscribe('singlePost', userId);
+    var handle = Meteor.subscribe('singleUser', userId);
     if(handle.ready()) {
       data.user = Users.findOne({_id: userId});
     }

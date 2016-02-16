@@ -19,7 +19,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 react
 less
 nemo64:bootstrap
-accounts-ui
 accounts-password
 kadira:flow-router
 kadira:react-layout
@@ -31,3 +30,5 @@ meteorhacks:npm
 npm-container
 firfi:meteor-react-bootstrap
 react-template-helper
+accounts-base
+universe:i18n
