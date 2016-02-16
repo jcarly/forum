@@ -41,6 +41,15 @@ if (Meteor.isServer) {
   	Meteor.publish("tasks", function () {
     	return Tasks.find();
   	});
+  	/*Meteor.publish("users", function () {
+    	return Meteor.users.find();
+  	});
+  	Meteor.publish('singleUser', function(id) {
+		//check(id, String);
+		// Make a delay manually to show the loading state
+		//Meteor._sleepForMs(1000);
+		return Meteor.users.find({_id: id});
+	});*/
 }
 
 Meteor.methods({

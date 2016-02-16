@@ -27,8 +27,13 @@ var userSection = FlowRouter.group({
   prefix: "/user"
 });
 
-// for the /admin page
 userSection.route('/:userId', {
+  action(params) {
+    ReactLayout.render(MainLayout, {content: <User {...params} />});
+  }
+});
+
+userSection.route('/register', {
   action(params) {
     ReactLayout.render(MainLayout, {content: <User {...params} />});
   }
