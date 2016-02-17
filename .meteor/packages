@@ -32,3 +32,4 @@ firfi:meteor-react-bootstrap
 react-template-helper
 accounts-base
 universe:i18n
+accounts-ui

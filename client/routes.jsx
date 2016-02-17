@@ -33,8 +33,8 @@ userSection.route('/:userId', {
   }
 });
 
-userSection.route('/register', {
+FlowRouter.route('/register', {
   action(params) {
-    ReactLayout.render(MainLayout, {content: <User {...params} />});
+    ReactLayout.render(MainLayout, {content: <Register {...params} />});
   }
 });

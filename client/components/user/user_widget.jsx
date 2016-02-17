@@ -10,8 +10,7 @@ UserWidget = React.createClass({
     return(
       <div>
       {
-        this.data.currentUser ?  
-        React.createElement('a', {href: 'user/'+this.data.userId}, 'Hello '+ this.data.currentUser.username) : <Login />
+        this.data.currentUser ? <Logged /> : <Login />
       }
       </div>
     )

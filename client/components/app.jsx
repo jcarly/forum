@@ -33,7 +33,7 @@ App = React.createClass({
   },
   handleClick: function(event) {
     Meteor.call('getFriendsData', function(err, data) {
-      console.log('click');
+      React.findDOMNode(this.refs.textInput).text(JSON.stringify(data, undefined, 4));
       console.log(JSON.stringify(data, undefined, 4));
     });
   },
@@ -57,37 +57,39 @@ App = React.createClass({
  
   render() {
     return (
-        <div>
-          <h2>Todo List ({this.data.incompleteCount})</h2>
- 
-          <label className="hide-completed">
-            <input
-              type="checkbox"
-              readOnly={true}
-              checked={this.state.hideCompleted}
-              onClick={this.toggleHideCompleted} />
-            Hide Completed Tasks
-          </label>
- 
-          <UserWidget />
+      <div>
+        <h2>Todo List ({this.data.incompleteCount})</h2>
 
-          { this.data.currentUser ?
-            <form className="new-task" onSubmit={this.handleSubmit} >
-              <input
-                type="text"
-                ref="textInput"
-                placeholder="Type to add new tasks" />
-            </form> : ''
-          }
+        <label className="hide-completed">
+          <input
+            type="checkbox"
+            readOnly={true}
+            checked={this.state.hideCompleted}
+            onClick={this.toggleHideCompleted} />
+          Hide Completed Tasks
+        </label>
+
+        { this.data.currentUser ?
+          <form className="new-task" onSubmit={this.handleSubmit} >
+            <input
+              type="text"
+              ref="textInput"
+              placeholder="Type to add new tasks" />
+          </form> : ''
+        }
 
  
         <ul>
           {this.renderTasks()}
         </ul>
-        <button className="btn" id="btn-user-data" onClick={this.handleClick}>Get User Data</button>
-          <div class="well">
-              <pre id="result"></pre>
-          </div>
+
+         { this.data.currentUser ?          
+          <div className="well">
+            <button className="btn" id="btn-user-data" onClick={this.handleClick}>Get User Data</button>
+            <pre id="result"></pre>
+          </div> : ''
+        }
+        
       </div>
     );
   }
